@@ -1,0 +1,44 @@
+<launch>
+    <arg name="nao_ip" value="192.168.0.10"/>
+    <arg name="nao_port" value="9559"/>
+    <arg name="motion_file" value="$(find survey_sm_expressions)/config/motions_for_testing.yaml"/>
+
+    <!-- Information for tasks -->
+    <arg name="world_to_robot_x" value="0" />
+    <arg name="world_to_robot_y" value="0" />
+    <arg name="world_to_robot_z" value="0.73" />
+
+    <arg name="world_to_camera_x" value="-0.38" />
+    <arg name="world_to_camera_y" value="0.0" />
+    <arg name="world_to_camera_z" value="1.81" />
+    <arg name="world_to_camera_tilt" value="0.34" />
+
+
+    <!-- Bringup mhri -->
+    <include file="$(find survey_sm_expressions)/launch/bringup_mhri.launch">
+        <arg name="project_path" value="$(find survey_sm_expressions)"/>
+        <arg name="script_path" value="/home/byeongkyu/catkin_ws/src/mhri_workspace/domain_scripts/survey_multi_modal_expression"/>
+    </include>
+
+    <!-- Bringup Camera -->
+    <include file="$(find survey_sm_expressions)/launch/bringup_camera.launch">
+        <arg name="diff_x" value="$(arg world_to_camera_x)" />
+        <arg name="diff_y" value="$(arg world_to_camera_y)" />
+        <arg name="diff_z" value="$(arg world_to_camera_z)" />
+        <arg name="diff_tilt" value="$(arg world_to_camera_tilt)" />
+    </include>
+
+    <!-- Bringup NAO -->
+    <include file="$(find nao_v5)/launch/bringup_nao.launch">
+        <arg name="nao_ip" value="$(arg nao_ip)"/>
+        <arg name="nao_port" value="$(arg nao_port)"/>
+        <arg name="motion_file" value="$(arg motion_file)"/>
+    </include>
+
+    <node name="static_tf_publisher" type="static_transform_publisher" pkg="tf"
+        args="$(arg world_to_robot_x) $(arg world_to_robot_y) $(arg world_to_robot_z) 0 0 0 world odom 0.2" output="screen"/>
+
+    <!-- Bringup Perception -->
+    <include file="$(find survey_sm_expressions)/launch/bringup_perceptions.launch"/>
+
+</launch>

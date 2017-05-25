@@ -1,0 +1,6 @@
+<launch>
+    <node name="sensory_face_detector" type="face_detector_pointcloud_node" pkg="face_detector_pointcloud" output="screen"/>
+    <node name="face_detector" type="face_detector.py" pkg="face_detector_py" output="screen">
+        <param name="config_file" value="$(find face_detector_py)/config/perception_conf.yaml"/>
+    </node>
+</launch>

@@ -1,0 +1,26 @@
+Box1:
+  description: 'Red box'
+  xyz: [1.13, -0.8, 0.8]
+  frame_id: 'world'
+  geometry:
+    box: [0.1, 0.1, 0.1]
+  material:
+    color: [1.0, 0.0, 0.0, 1.0]
+
+Box2:
+  description: 'Green box'
+  xyz: [1.15, 0.8, 0.8]
+  frame_id: 'world'
+  geometry:
+    box: [0.1, 0.1, 0.1]
+  material:
+    color: [0.0, 1.0, 0.0, 1.0]
+
+Table:
+  description: 'Table'
+  xyz: [0.2, 0.0, 0.36]
+  frame_id: 'world'
+  geometry:
+    cylinder: [0.85, 0.85, 0.73]
+  material:
+    color: [0.8, 0.5, 0.5, 1.0]

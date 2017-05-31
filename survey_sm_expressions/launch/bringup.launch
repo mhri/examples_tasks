@@ -35,8 +35,8 @@
         <arg name="motion_file" value="$(arg motion_file)"/>
     </include>
 
-    <node name="static_tf_publisher" type="static_transform_publisher" pkg="tf"
-        args="$(arg world_to_robot_x) $(arg world_to_robot_y) $(arg world_to_robot_z) 0 0 0 world odom 0.2" output="screen"/>
+    <node name="world_to_odom" type="static_transform_publisher" pkg="tf2_ros"
+        args="$(arg world_to_robot_x) $(arg world_to_robot_y) $(arg world_to_robot_z) 0 0 0 world odom" output="screen"/>
 
     <!-- Bringup Perception -->
     <include file="$(find survey_sm_expressions)/launch/bringup_perceptions.launch"/>

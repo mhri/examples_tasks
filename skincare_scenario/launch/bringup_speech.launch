@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find google_cloud_speech)/launch/bringup.launch" />
+    <include file="$(find speech_recognizer_py)/launch/bringup_perception.launch" />
+</launch>

@@ -1,0 +1,13 @@
+<launch>
+    <arg name="world_to_kinect2_x"     default="0.0" />
+    <arg name="world_to_kinect2_y"     default="0.0" />
+    <arg name="world_to_kinect2_z"     default="0.0" />
+    <arg name="world_to_kinect2_roll"  default="0.0" />
+    <arg name="world_to_kinect2_pitch" default="0.0" />
+    <arg name="world_to_kinect2_yaw"   default="0.0" />
+
+    <include file="$(find tracking)/launch/detection_and_tracking_kinect2.launch" />
+    <node name="static_kinect2_base_footprint" type="static_transform_publisher" pkg="tf2_ros"
+        args="$(arg world_to_kinect2_x) $(arg world_to_kinect2_y) $(arg world_to_kinect2_z)
+              $(arg world_to_kinect2_roll) $(arg world_to_kinect2_pitch) $(arg world_to_kinect2_yaw) world kinect2_head_link" />
+</launch>

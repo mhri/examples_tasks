@@ -1,0 +1,16 @@
+<launch>
+    <arg name="nao_ip"   default="127.0.0.1"/>
+    <arg name="nao_port" default="9559"/>
+
+    <arg name="world_to_robot_x" default="0.0" />
+    <arg name="world_to_robot_y" default="0.0" />
+    <arg name="world_to_robot_z" default="0.0" />
+
+    <include file="$(find nao_v5)/launch/bringup_nao.launch">
+        <arg name="nao_ip" value="$(arg nao_ip)"/>
+        <arg name="nao_port" value="$(arg nao_port)"/>
+    </include>
+
+    <node name="world_to_odom" type="static_transform_publisher" pkg="tf2_ros"
+        args="$(arg world_to_robot_x) $(arg world_to_robot_y) $(arg world_to_robot_z) 0 0 0 world odom" output="screen"/>
+</launch>

@@ -1,0 +1,24 @@
+<launch>
+    <arg name="project_path" default="$(find skincare_scenario)" />
+    <arg name="script_path"  default="$(find skincare_scenario)/scripts" />
+    <arg name="connect_with_social_mind" default="true" />
+
+    <!-- Core Functionality -->
+    <include file="$(find mhri)/launch/bringup_core.launch">
+        <arg name="project_path" value="$(arg project_path)" />
+    </include>
+
+    <!-- Renderer Functionality-->
+    <include file="$(find motion_renderer)/launch/bringup_renderer.launch">
+        <arg name="fake_render_speech" default="false" />
+        <arg name="fake_render_gesture" default="false" />
+        <arg name="fake_render_facial_expression" default="false" />
+        <arg name="fake_render_sound" default="true" />
+    </include>
+
+    <!-- Dialog Functionality -->
+    <include file="$(find mhri_dialog)/launch/bringup.launch">
+        <arg name="script_path" value="$(arg script_path)" />
+        <arg name="connect_with_social_mind" value="$(arg connect_with_social_mind)"/>
+    </include>
+</launch>

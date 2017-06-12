@@ -1,0 +1,40 @@
+<launch>
+    <arg name="nao_ip"   value="192.168.0.10"/>
+
+    <arg name="world_to_robot_x" value="0.25" />
+    <arg name="world_to_robot_y" value="0.0" />
+    <arg name="world_to_robot_z" value="0.72" />
+
+    <arg name="world_to_kinect2_x"     value="0.0" />
+    <arg name="world_to_kinect2_y"     value="0.0" />
+    <arg name="world_to_kinect2_z"     value="1.9" />
+    <arg name="world_to_kinect2_roll"  value="-1.570796" />
+    <arg name="world_to_kinect2_pitch" value="0.0" />
+    <arg name="world_to_kinect2_yaw"   value="-2.05" />
+
+    <arg name="project_path" value="$(find skincare_scenario)" />
+    <arg name="script_path"  value="/home/byeongkyu/catkin_ws/src/mhri_workspace/domain_scripts/skincare_scenario" />
+
+    <include file="$(find skincare_scenario)/launch/bringup_robot.launch">
+        <arg name="nao_ip" value="$(arg nao_ip)" />
+        <arg name="world_to_robot_x" value="$(arg world_to_robot_x)" />
+        <arg name="world_to_robot_y" value="$(arg world_to_robot_y)" />
+        <arg name="world_to_robot_z" value="$(arg world_to_robot_z)" />
+    </include>
+
+    <include file="$(find skincare_scenario)/launch/bringup_openptrack.launch">
+        <arg name="world_to_kinect2_x"     value="$(arg world_to_kinect2_x)" />
+        <arg name="world_to_kinect2_y"     value="$(arg world_to_kinect2_y)" />
+        <arg name="world_to_kinect2_z"     value="$(arg world_to_kinect2_z)" />
+        <arg name="world_to_kinect2_roll"  value="$(arg world_to_kinect2_roll)" />
+        <arg name="world_to_kinect2_pitch" value="$(arg world_to_kinect2_pitch)" />
+        <arg name="world_to_kinect2_yaw"   value="$(arg world_to_kinect2_yaw)" />
+    </include>
+
+    <include file="$(find skincare_scenario)/launch/bringup_mhri.launch">
+        <arg name="project_path" value="$(arg project_path)"/>
+        <arg name="script_path"  value="$(arg script_path)"/>
+    </include>
+
+    <include file="$(find skincare_scenario)/launch/bringup_speech.launch"/>
+</launch>

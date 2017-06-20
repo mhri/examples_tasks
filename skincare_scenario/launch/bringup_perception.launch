@@ -1,0 +1,9 @@
+<launch>
+    <arg name="Color_Image_Topic" default="image_color"/>
+    <arg name="PointCloud2_Topic" default="points"/>
+
+    <include file="$(find etri_perceptions)/launch/bringup_pipeline.launch">
+        <arg name="Color_Image_Topic" value="$(arg Color_Image_Topic)" />
+        <arg name="PointCloud2_Topic" value="$(arg PointCloud2_Topic)" />
+    </include>
+</launch>

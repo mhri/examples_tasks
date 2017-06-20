@@ -34,6 +34,14 @@
     <include file="$(find skincare_scenario)/launch/bringup_mhri.launch">
         <arg name="project_path" value="$(arg project_path)"/>
         <arg name="script_path"  value="$(arg script_path)"/>
+        <arg name="fake_render_speech" default="true"/>
+        <arg name="fake_render_gesture" default="true"/>
+        <arg name="fake_render_facial_expression" default="true"/>
+    </include>
+
+    <include file="$(find skincare_scenario)/launch/bringup_perception.launch">
+        <arg name="Color_Image_Topic" value="/kinect2_head/sd/image_color_rect"/>
+        <arg name="PointCloud2_Topic" value="/kinect2_head/sd/points"/>
     </include>
 
     <include file="$(find skincare_scenario)/launch/bringup_speech.launch"/>

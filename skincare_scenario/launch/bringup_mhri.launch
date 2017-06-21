@@ -25,4 +25,6 @@
         <arg name="script_path" value="$(arg script_path)" />
         <arg name="connect_with_social_mind" value="$(arg connect_with_social_mind)"/>
     </include>
+
+    <node name="speech_status" type="rqt_speech_status" pkg="rqt_speech_status" output="screen" />
 </launch>

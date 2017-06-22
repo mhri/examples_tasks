@@ -7,10 +7,10 @@
 
     <arg name="world_to_kinect2_x"     value="0.0" />
     <arg name="world_to_kinect2_y"     value="0.0" />
-    <arg name="world_to_kinect2_z"     value="1.9" />
+    <arg name="world_to_kinect2_z"     value="1.8" />
     <arg name="world_to_kinect2_roll"  value="-1.570796" />
     <arg name="world_to_kinect2_pitch" value="0.0" />
-    <arg name="world_to_kinect2_yaw"   value="-2.05" />
+    <arg name="world_to_kinect2_yaw"   value="-1.95" />
 
     <arg name="project_path" value="$(find skincare_scenario)" />
     <arg name="script_path"  value="/home/byeongkyu/catkin_ws/src/mhri_workspace/domain_scripts/skincare_scenario" />
@@ -34,9 +34,9 @@
     <include file="$(find skincare_scenario)/launch/bringup_mhri.launch">
         <arg name="project_path" value="$(arg project_path)"/>
         <arg name="script_path"  value="$(arg script_path)"/>
-        <arg name="fake_render_speech" value="true"/>
-        <arg name="fake_render_gesture" value="true"/>
-        <arg name="fake_render_facial_expression" value="true"/>
+        <arg name="fake_render_speech" value="false"/>
+        <arg name="fake_render_gesture" value="false"/>
+        <arg name="fake_render_facial_expression" value="false"/>
     </include>
 
     <include file="$(find skincare_scenario)/launch/bringup_perception.launch">
@@ -45,4 +45,8 @@
     </include>
 
     <include file="$(find skincare_scenario)/launch/bringup_speech.launch"/>
+
+    <node name="naver_tts" type="speech_node.py" pkg="render_speech_naver_voice_tts" output="screen">
+        <param name="config_file" value="$(find render_speech_naver_voice_tts)/config/speech_conf.json" />
+    </node>
 </launch>

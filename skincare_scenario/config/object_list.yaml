@@ -15,3 +15,12 @@ Box2:
     box: [0.1, 0.1, 0.1]
   material:
     color: [0.0, 1.0, 0.0, 1.0]
+
+Table1:
+  description: 'Table'
+  xyz: [0.325, 0.0, 0.36]
+  frame_id: 'world'
+  geometry:
+    box: [0.65, 0.70, 0.72]
+  material:
+    color: [0.8, 0.8, 0.0, 1.0]

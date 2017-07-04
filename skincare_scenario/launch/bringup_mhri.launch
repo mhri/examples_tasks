@@ -1,6 +1,7 @@
 <launch>
     <arg name="project_path" default="$(find skincare_scenario)" />
     <arg name="script_path"  default="$(find skincare_scenario)/scripts" />
+    <arg name="overwrite" default="true" />
     <arg name="connect_with_social_mind" default="true" />
     <arg name="fake_render_speech" default="false"/>
     <arg name="fake_render_gesture" default="false"/>
@@ -10,6 +11,7 @@
     <!-- Core Functionality -->
     <include file="$(find mhri)/launch/bringup_core.launch">
         <arg name="project_path" value="$(arg project_path)" />
+        <arg name="overwrite" value="$(arg overwrite)" />
     </include>
 
     <!-- Renderer Functionality-->
